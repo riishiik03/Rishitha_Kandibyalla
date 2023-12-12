@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Delete</title>
+</head>
+<body>
+    <h1>Confirm Deletion</h1>
+    <p>Are you sure you want to delete the contact:</p>
+    <p><strong>{{ contact.first_name }} {{ contact.last_name }}</strong></p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm Delete">
+        <a href="{% url 'contacts_list' %}">Cancel</a>
+    </form>
+</body>
+</html>

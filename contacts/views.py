@@ -10,7 +10,7 @@ def contacts_list(request):
     return render(request, 'contacts/contacts_list.html', {'contacts': contacts})
 
 # View to create a new contact
-def contacts_new(request):
+def contacts_form(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -44,3 +44,17 @@ def contacts_delete(request, id):
         contact.delete()
         return redirect('contacts_list')
     return render(request, 'contacts/contacts_confirm_delete.html', {'contact': contact})
+
+#view for creating a contact
+def contacts_form(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('contacts_list')
+    else:
+        form = ContactForm()
+    return render(request, 'contacts/contacts_create.html', {'form': form})
+
+
+

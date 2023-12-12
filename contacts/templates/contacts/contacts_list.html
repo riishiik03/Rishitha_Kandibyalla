@@ -6,11 +6,19 @@
 <body>
     <h1>Contact List</h1>
     <ul>
+        <a href="{% url 'contacts_form' %}">Create contact</a>
         {% for contact in contacts %}
-            <li>{{ contact.first_name }} {{ contact.last_name }} - {{ contact.phone_number }}</li>
+            <li>
+                {{ contact.first_name }} {{ contact.last_name }} - {{ contact.phone_number }}
+                
+                
+            </li>
         {% empty %}
-            <li>No contacts available.</li>
+            <li>No contacts available. <a href="{% url 'contacts_form' %}">Create contact</a></li>
         {% endfor %}
     </ul>
+    <footer>
+        <p>Created by Rishitha Kandibyalla</p>
+    </footer>
 </body>
 </html>
