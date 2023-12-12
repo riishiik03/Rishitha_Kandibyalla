@@ -10,7 +10,7 @@
         {% for contact in contacts %}
             <li>
                 {{ contact.first_name }} {{ contact.last_name }} - {{ contact.phone_number }}
-                
+            <a href="{% url 'contacts_update' contact.id %}">Edit</a>   
                 
             </li>
         {% empty %}
