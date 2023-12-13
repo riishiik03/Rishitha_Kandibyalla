@@ -38,7 +38,7 @@ def contacts_edit(request, id):
     return render(request, 'contacts/contacts_update.html', {'form': form})
 
 # View to delete a contact
-def contacts_delete(request, id):
+def contacts_confirm_delete(request, id):
     contact = get_object_or_404(Contact, id=id)
     if request.method == "POST":
         contact.delete()
