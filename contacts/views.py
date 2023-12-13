@@ -85,3 +85,11 @@ def contacts_create(request):
         form = ContactForm()
     return render(request, 'contacts/contacts_create.html', {'form': form})
 
+
+
+# View to display contact details
+def contacts_view(request, id):
+    contact = get_object_or_404(Contact, id=id)
+    return render(request, 'contacts/contacts_view.html', {'contact': contact})
+
+

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Details</title>
+</head>
+<body>
+    <h1>Contact Details</h1>
+    <p><strong>Name:</strong> {{ contact.first_name }} {{ contact.last_name }}</p>
+    <p><strong>Phone Number:</strong> {{ contact.phone_number }}</p>
+    <p><strong>Email:</strong> {{ contact.email }}</p>
+    <p><strong>Address:</strong> {{ contact.address }}</p>
+    
+    <!-- Add other contact details as needed -->
+
+    <a href="{% url 'contacts_list' %}">Back to Contact List</a>
+</body>
+</html>

@@ -11,7 +11,8 @@
             <li>
                 {{ contact.first_name }} {{ contact.last_name }} - {{ contact.phone_number }}
             <a href="{% url 'contacts_update' contact.id %}">Edit</a>   
-            <a href="{% url 'contacts_confirm_delete' contact.id %}">Delete</a>   
+            <a href="{% url 'contacts_confirm_delete' contact.id %}">Delete</a>  
+            <a href="{% url 'contacts_view' contact.id %}">View</a>  
                 
             </li>
         {% empty %}

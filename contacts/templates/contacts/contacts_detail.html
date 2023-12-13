@@ -1,5 +1,10 @@
 <!-- contact_detail.html -->
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Details Contact</title>
+</head>
+<body>
 
 {% block content %}
   <h2>Contact Detail</h2>
@@ -7,6 +12,8 @@
   <p>Phone: {{ contact.phone_number }}</p>
   <p>Email: {{ contact.email }}</p>
   <p>Address: {{ contact.address }}</p>
-  <a href="{% url 'contact_edit' contact.id %}">Edit</a> |
-  <a href="{% url 'contact_list' %}">Back to list</a>
+  <a href="{% url 'contacts_update' contact.id %}">Edit</a> |
+  <a href="{% url 'contacts_list' %}">Back to list</a>
 {% endblock %}
+</body>
+</html>
