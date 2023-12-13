@@ -2,15 +2,32 @@
 <html>
 <head>
     <title>Confirm Delete</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Confirm Deletion</h1>
-    <p>Are you sure you want to delete the contact:</p>
-    <p><strong>{{ contact.first_name }} {{ contact.last_name }}</strong></p>
-    <form method="post">
-        {% csrf_token %}
-        <input type="submit" value="Confirm Delete">
-        <a href="{% url 'contacts_list' %}">Cancel</a>
-    </form>
+    <div class="container">
+        <h1 class="mt-4">Confirm Deletion</h1>
+        <div class="alert alert-danger mt-4">
+            <p class="mb-0">Are you sure you want to delete the contact:</p>
+            <p><strong>{{ contact.first_name }} {{ contact.last_name }}</strong></p>
+        </div>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a href="{% url 'contacts_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery links here (if needed) -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    -->
+    <footer style="text-align: center; position: absolute; bottom: 0; width: 100%;">
+        <p>&copy; Created by Rishitha Kandibyalla</p>
+    </footer>
+</body>
 </body>
 </html>
