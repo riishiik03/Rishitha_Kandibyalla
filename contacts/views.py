@@ -38,12 +38,14 @@ def contacts_edit(request, id):
     return render(request, 'contacts/contacts_update.html', {'form': form})
 
 # View to delete a contact
-def contacts_confirm_delete(request, id):
-    contact = get_object_or_404(Contact, id=id)
+def contacts_confirm_delete(request, contact_id):  # Update parameter name to 'contact_id'
+    contact = get_object_or_404(Contact, id=contact_id)
     if request.method == "POST":
         contact.delete()
         return redirect('contacts_list')
     return render(request, 'contacts/contacts_confirm_delete.html', {'contact': contact})
+
+
 
 #view for creating a contact
 def contacts_form(request):
@@ -70,3 +72,16 @@ def contacts_update(request, contact_id):
         return redirect('contacts_list')  # Redirect to the contact list page after editing
 
     return render(request, 'contacts_update.html', {'contact': contact})
+
+
+# View to create a new contact
+def contacts_create(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('contacts_list')
+    else:
+        form = ContactForm()
+    return render(request, 'contacts/contacts_create.html', {'form': form})
+
