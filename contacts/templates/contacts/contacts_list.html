@@ -1,26 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Contact List</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Contact List</h1>
-    <ul>
-        <a href="{% url 'contacts_form' %}">Create contact</a>
-        {% for contact in contacts %}
-            <li>
-                {{ contact.first_name }} {{ contact.last_name }} - {{ contact.phone_number }}
-            <a href="{% url 'contacts_update' contact.id %}">Edit</a>   
-            <a href="{% url 'contacts_confirm_delete' contact.id %}">Delete</a>  
-            <a href="{% url 'contacts_view' contact.id %}">View</a>  
-                
-            </li>
-        {% empty %}
-            <li>No contacts available. <a href="{% url 'contacts_form' %}">Create contact</a></li>
-        {% endfor %}
-    </ul>
-    <footer style="text-align: center; position: absolute; bottom: 0; width: 100%;">
+    <div class="container mt-5">
+        <h1 class="text-center">Contact List</h1>
+        <a href="{% url 'contacts_form' %}" class="btn btn-primary mb-3">Create Contact</a>
+        <ul class="list-group">
+            {% for contact in contacts %}
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <span>
+                            {{ contact.first_name }} {{ contact.last_name }} - {{ contact.phone_number }}
+                        </span>
+                        <div class="btn-group">
+                            <a href="{% url 'contacts_update' contact.id %}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{% url 'contacts_confirm_delete' contact.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{% url 'contacts_view' contact.id %}" class="btn btn-info btn-sm">View</a>
+                        </div>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-center">
+                    No contacts available.
+                    <a href="{% url 'contacts_form' %}" class="btn btn-primary">Create Contact</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <footer class="bg-dark text-white text-center py-2 mt-5">
         <p>&copy; Created by Rishitha Kandibyalla</p>
     </footer>
+
+    <!-- Add Bootstrap JS and jQuery links here (if needed) -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    -->
 </body>
 </html>

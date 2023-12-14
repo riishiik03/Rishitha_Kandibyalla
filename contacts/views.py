@@ -58,8 +58,6 @@ def contacts_form(request):
         form = ContactForm()
     return render(request, 'contacts/contacts_create.html', {'form': form})
 
-
-#view for updating a contact
 def contacts_update(request, contact_id):
     contact = get_object_or_404(Contact, pk=contact_id)
 
@@ -69,7 +67,7 @@ def contacts_update(request, contact_id):
         contact.last_name = request.POST['last_name']
         contact.phone_number = request.POST['phone_number']
         contact.save()
-        return redirect('contacts_list')  # Redirect to the contact list page after editing
+        return redirect('contacts/contacts_list')  # Redirect to the contact list page after editing
 
     return render(request, 'contacts_update.html', {'contact': contact})
 
@@ -93,3 +91,20 @@ def contacts_view(request, id):
     return render(request, 'contacts/contacts_view.html', {'contact': contact})
 
 
+def contacts_update(request, id):
+    contact = get_object_or_404(Contact, id=id)
+    # Rest of the view logic
+    return render(request, 'contacts/contacts_update.html', {'contact': contact})
+
+
+
+def contacts_update(request, id):
+    contact = get_object_or_404(Contact, id=id)
+    if request.method == "POST":
+        form = ContactForm(request.POST, instance=contact)
+        if form.is_valid():
+            form.save()
+            return redirect('contacts_list')
+    else:
+        form = ContactForm(instance=contact)
+    return render(request, 'contacts/contacts_update.html', {'form': form, 'contact': contact})

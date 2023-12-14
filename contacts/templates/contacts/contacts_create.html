@@ -2,21 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Create New Contact</title>
-    <!-- Add any additional head content or CSS links here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e9ecef;
+        }
+
+        .form-container {
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            background-color: #495057;
+            color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Create New Contact</h1>
+    <div class="container form-container">
+        <h1 class="text-center mb-4">Create New Contact</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Save Contact</button>
+        </form>
+        <a href="{% url 'contacts_list' %}" class="btn btn-secondary btn-block mt-3">Back to Contact List</a>
+    </div>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save Contact</button>
-    </form>
-
-    <a href="{% url 'contacts_list' %}">Back to Contact List</a>
-    <footer style="text-align: center; position: absolute; bottom: 0; width: 100%;">
+    <footer class="footer">
         <p>&copy; Created by Rishitha Kandibyalla</p>
     </footer>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

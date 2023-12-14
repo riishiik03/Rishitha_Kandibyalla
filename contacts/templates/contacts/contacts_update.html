@@ -1,27 +1,46 @@
+{% extends 'Contacts/base.html' %}
+
+{% block title %}Edit Contact{% endblock %}
+
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Edit Contact</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Edit Contact</h1>
-    <form method="post" action="{% url 'contacts_update' contact.id %}">
+<div class="container">
+    <h2>Edit Contact</h2>
+    <form method="post">
         {% csrf_token %}
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" value="{{ contact.first_name }}" required><br><br>
-        
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" value="{{ contact.last_name }}" required><br><br>
-        
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="phone_number" value="{{ contact.phone_number }}" required><br><br>
-        
-        <input type="submit" value="Update">
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" value="{{ contact.first_name }}" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" value="{{ contact.last_name }}" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{ contact.phone_number }}" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ contact.email }}" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="address" id="address" name="address" value="{{ contact.address }}" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{% url 'contacts_list' %}" class="btn btn-secondary">Cancel</a>
     </form>
-    <br>
-    <a href="{% url 'contacts_list' %}">Back to Contact List</a>
-    <footer style="text-align: center; position: absolute; bottom: 0; width: 100%;">
-        <p>&copy; Created by Rishitha Kandibyalla</p>
-    </footer>
-</body>
-</html>
+</div>
+{% endblock %}

@@ -1,22 +1,33 @@
-<!-- contact_detail.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Details Contact</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <div class="container mt-5">
+        <div class="jumbotron">
+            {% block content %}
+            <h2 class="display-4">Contact Detail</h2>
+            <p class="lead">Name: {{ contact.first_name }} {{ contact.last_name }}</p>
+            <p class="lead">Phone: {{ contact.phone_number }}</p>
+            <p class="lead">Email: {{ contact.email }}</p>
+            #<p class="lead">Address: {{ contact.address }}</p>
+            <a href="{% url 'contacts_update' contact.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'contacts_list' %}" class="btn btn-secondary">Back to list</a>
+            {% endblock %}
+        </div>
+    </div>
+    <footer class="bg-dark text-white text-center py-2">
+        <p>&copy; Created by Rishitha Kandibyalla</p>
+    </footer>
 
-{% block content %}
-  <h2>Contact Detail</h2>
-  <p>Name: {{ contact.first_name }} {{ contact.last_name }}</p>
-  <p>Phone: {{ contact.phone_number }}</p>
-  <p>Email: {{ contact.email }}</p>
-  <p>Address: {{ contact.address }}</p>
-  <a href="{% url 'contacts_update' contact.id %}">Edit</a> |
-  <a href="{% url 'contacts_list' %}">Back to list</a>
-{% endblock %}
-<footer style="text-align: center; position: absolute; bottom: 0; width: 100%;">
-  <p>&copy; Created by Rishitha Kandibyalla</p>
-</footer>
+    <!-- Add Bootstrap JS and jQuery links here (if needed) -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    -->
 </body>
 </html>
